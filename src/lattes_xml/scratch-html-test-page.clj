@@ -28,13 +28,13 @@ html/as-nodes
 
 ;;;;;
 
-html/at
 
-(at parsed-html
-    [:head] (substitute new-content)
-    [:body] (substitute new-content)))
+(html/at parsed-html
+    [:head] (html/substitute new-content)
+    [:body] (html/substitute new-content))
 
 ;;;;;
+
 html/at*
 html/attr-contains
 html/attr-ends
@@ -169,6 +169,28 @@ html/this-node
 
 
 (html/transform parsed-html [:header] (html/append new-content))
+
+
+
+(html/transform parsed-html [:div#wrapper]
+           (wrap :div
+                 {:id "superdiv", :class "wasted space"})))
+
+
+(transform parsed-html [:div#wrapper] unwrap)
+
+
+
+(transform parsed-html [:div#wrapper]
+                  (set-attr :NEWBIE "FRED", :OLDIE "DAWN"))
+
+
+(transform parsed-html [:div#wrapper]
+                   (remove-attr :id))
+
+
+(transform parsed-html [:div#wrapper]
+                   (add-class "highlight" "plain-styled"))
 
 ;;;;
 
