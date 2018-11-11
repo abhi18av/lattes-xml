@@ -1,15 +1,13 @@
 ;; NOTE: https://github.com/cbracco/html5-test-page
 ;; TODO: create a separate repo for the enlive tutorial with this page
+;; TODO: render the html5 page with hiccup
 
 (ns lattes-xml.scratch-html-test-page
   (:require [net.cgrand.enlive-html :as html]
             [clojure.pprint :as pprint]))
 
-
 (def sample-html
- (slurp  "/Users/eklavya/projects/code/lattes-xml/src/lattes_xml/html5-test-page.html"))
-
-
+  (slurp  "/Users/eklavya/projects/code/lattes-xml/src/lattes_xml/html5-test-page.html"))
 
 (def parsed-html (html/html-resource (java.io.StringReader. sample-html)))
 
@@ -27,7 +25,16 @@ html/any-node
 html/append
 html/append!
 html/as-nodes
+
+;;;;;
+
 html/at
+
+(at parsed-html
+    [:head] (substitute new-content)
+    [:body] (substitute new-content)))
+
+;;;;;
 html/at*
 html/attr-contains
 html/attr-ends
@@ -113,16 +120,14 @@ html/root
 
 (html/select parsed-html [:fieldset (html/attr= :for "in")])
 
-
 ;; AND relationship betweeen selectors
 
 
-(html/select parsed-html [[:option (html/attr= :selected "selected")]])
-
+(html/select parsed-html [[:input (html/attr= :name "checkbox")]])
 
 ;; OR relationship betweeen selectors
 
-(html/select parsed-html [#{:select (html/attr= :selected "selected")}]
+(pprint/pprint (html/select parsed-html [#{:select (html/attr= :name "checkbox")}]))
 
 ;;;;
 html/select-fragments*
@@ -145,7 +150,28 @@ html/text-node
 html/text-pred
 html/texts
 html/this-node
-html/transform
+
+;;;;
+
+
+(def new-content '({:tag :p, :content ("Hello, World!")}))
+
+(html/transform parsed-html [:header :h1] identity) ;; changes nothing
+
+
+(html/transform parsed-html [:header :h1] (html/content new-content))
+
+(html/transform parsed-html [:header :h1]
+                (html/content "Say it!"
+                         [[[new-content]]]  ; <== wrapped
+                         "Say it again!"
+                         new-content))
+
+
+(html/transform parsed-html [:header] (html/append new-content))
+
+;;;;
+
 html/transform-content
 html/transformation
 html/union
@@ -161,8 +187,6 @@ html/zip-select
 html/zip-select-fragments*
 html/zip-select-nodes*
 
-
-
 ;;;;;;;;;;;;;;;
 ;; enlive-reload
 ;;;;;;;;;;;;;;;
@@ -173,15 +197,12 @@ html/reload-ns
 html/stale-dep?
 html/stale-ns?
 
-
 ;;;;;;;;;;;;;;
 ;; reload
 ;;;;;;;;;;;;;;
 
 html/auto-reload
 html/watch-url
-
-
 
 ;;;;;;;;;;;;;;
 ;; xml
@@ -198,8 +219,6 @@ html/tag
 html/tag?
 html/xml-zip
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -208,8 +227,6 @@ html/xml-zip
 ;;;;;;;;;;;;;;;
 
 
-
 ;;;;;;;;;;;;;;;
 ;; TRANSFORMERS
 ;;;;;;;;;;;;;;;
-
