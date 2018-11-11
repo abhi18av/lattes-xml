@@ -81,7 +81,27 @@
 
 (pprint/pprint (html/transform parsed-layout-html
                    [:#wrapper]
-                   (html/content page-content)))
+                   (html/content
+                    "Say it!"
+                    [[[page-content]]]  ; <== wrapped
+                    "Say it again!"
+                    page-content)))
+
+
+
+(pprint/pprint
+ (html/transform parsed-layout-html [:#wrapper]
+            (html/append page-content)))
+
+
+(pprint (at layout
+            [:head] (substitute page-content)
+            [:body] (substitute page-content)))
+
+
+(pprint (transform layout [:div#wrapper]
+                   (wrap :div
+                         {:id "superdiv", :class "wasted space"})))
 
 ;;;;;;;;
 
@@ -135,8 +155,4 @@
 (pprint/pprint (html/select parsed-herd-html [#{:select (html/attr= :selected "selected")}]))
 
 
-
-
-
-
-
+; NOTE: https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-3%3A-Simple-Transformations
