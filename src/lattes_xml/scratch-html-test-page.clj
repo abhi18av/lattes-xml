@@ -109,7 +109,20 @@ html/root
 
 (html/select parsed-html [:#forms__radio])
 
-(html/select [(html/attr= :type "text")])
+(html/select parsed-html [(html/attr= :type "submit")])
+
+(html/select parsed-html [:fieldset (html/attr= :for "in")])
+
+
+;; AND relationship betweeen selectors
+
+
+(html/select parsed-html [[:option (html/attr= :selected "selected")]])
+
+
+;; OR relationship betweeen selectors
+
+(html/select parsed-html [#{:select (html/attr= :selected "selected")}]
 
 ;;;;
 html/select-fragments*

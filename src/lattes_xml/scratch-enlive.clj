@@ -156,3 +156,9 @@
 
 
 ; NOTE: https://github.com/cgrand/enlive/wiki/Table-and-Layout-Tutorial%2C-Part-3%3A-Simple-Transformations
+
+
+(html/select parsed-herd-html [[:option (html/attr= :selected "selected")]])
+
+
+(html/select  parsed-herd-html [#{:select (html/attr= :selected "selected")}])
