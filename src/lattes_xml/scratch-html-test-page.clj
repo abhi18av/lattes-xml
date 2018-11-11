@@ -12,9 +12,5 @@
 (def parsed-html (html/html-resource (java.io.StringReader. sample-html)))
 
 
-(:html parsed-html)
-
-
-
-
+(:tag parsed-html)
 
