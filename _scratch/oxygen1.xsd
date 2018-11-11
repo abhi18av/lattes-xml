@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    
+    <xs:element name="CURRICULO-VITAE">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="DADOS-GERAIS"/>
+                <xs:element minOccurs="0" ref="PRODUCAO-BIBLIOGRAFICA"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="attlist.CURRICULO-VITAE"/>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    <xs:attributeGroup name="attlist.CURRICULO-VITAE">
+        <xs:attribute name="SISTEMA-ORIGEM-XML" use="required"/>
+        <xs:attribute name="NUMERO-IDENTIFICADOR"/>
+        <xs:attribute name="FORMATO-DATA-ATUALIZACAO" default="DDMMAAAA">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="DDMMAAAA"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="DATA-ATUALIZACAO"/>
+        <xs:attribute name="FORMATO-HORA-ATUALIZACAO" default="HHMMSS">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="HHMMSS"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="HORA-ATUALIZACAO"/>
+    </xs:attributeGroup>
+    
+</xs:schema>

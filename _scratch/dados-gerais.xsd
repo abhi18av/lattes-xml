@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+   
+    
+    <xs:element name="DADOS-GERAIS">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" ref="RESUMO-CV"/>
+                <xs:element minOccurs="0" ref="OUTRAS-INFORMACOES-RELEVANTES"/>
+                <xs:element minOccurs="0" ref="ENDERECO"/>
+                <xs:element minOccurs="0" ref="FORMACAO-ACADEMICA-TITULACAO"/>
+
+            </xs:sequence>
+            <xs:attributeGroup ref="attlist.DADOS-GERAIS"/>
+        </xs:complexType>
+    </xs:element>
+    
+    
+    
+    <xs:attributeGroup name="attlist.DADOS-GERAIS">
+        <xs:attribute name="NOME-COMPLETO" use="required"/>
+        <xs:attribute name="NOME-EM-CITACOES-BIBLIOGRAFICAS" use="required"/>
+        <xs:attribute name="NACIONALIDADE" use="required"/>
+        <xs:attribute name="CPF"/>
+        <xs:attribute name="NUMERO-DO-PASSAPORTE"/>
+        <xs:attribute name="PAIS-DE-NASCIMENTO"/>
+        <xs:attribute name="UF-NASCIMENTO"/>
+        <xs:attribute name="CIDADE-NASCIMENTO"/>
+        <xs:attribute name="FORMATO-DATA-DE-NASCIMENTO" default="DDMMAAAA">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="DDMMAAAA"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="DATA-NASCIMENTO"/>
+        <xs:attribute name="SEXO" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="MASCULINO"/>
+                    <xs:enumeration value="FEMININO"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="NUMERO-IDENTIDADE"/>
+        <xs:attribute name="ORGAO-EMISSOR"/>
+        <xs:attribute name="UF-ORGAO-EMISSOR"/>
+        <xs:attribute name="FORMATO-DATA-DE-EMISSAO" default="DDMMAAAA">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="DDMMAAAA"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="DATA-DE-EMISSAO"/>
+        <xs:attribute name="NOME-DO-PAI"/>
+        <xs:attribute name="NOME-DA-MAE"/>
+        <xs:attribute name="PERMISSAO-DE-DIVULGACAO" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:token">
+                    <xs:enumeration value="SIM"/>
+                    <xs:enumeration value="NAO"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="NOME-DO-ARQUIVO-DE-FOTO"/>
+        <xs:attribute name="TEXTO-RESUMO-CV-RH"/>
+        <xs:attribute name="OUTRAS-INFORMACOES-RELEVANTES"/>
+        <xs:attribute name="DATA-FALECIMENTO"/>
+        <xs:attribute name="SIGLA-PAIS-NACIONALIDADE"/>
+        <xs:attribute name="PAIS-DE-NACIONALIDADE"/>
+        <xs:attribute name="RACA-OU-COR"/>
+    </xs:attributeGroup> 
+    
+    
+</xs:schema>
