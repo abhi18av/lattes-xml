@@ -94,7 +94,24 @@ html/replace-words
 html/right
 html/rights
 html/root
-html/select
+
+;;;;
+
+(html/select parsed-html [:tfoot])
+
+(html/select parsed-html [:p])
+
+(html/select parsed-html [:p :label]) ; NOTE: :p.label or :p#label didnt' work
+
+(html/select parsed-html [:p :label.error])
+
+(html/select parsed-html [:ul])
+
+(html/select parsed-html [:#forms__radio])
+
+(html/select [(html/attr= :type "text")])
+
+;;;;
 html/select-fragments*
 html/select-nodes*
 html/self-closing-tags
@@ -177,7 +194,6 @@ html/xml-zip
 ;; SELECTORS
 ;;;;;;;;;;;;;;;
 
-(html/select )
 
 
 ;;;;;;;;;;;;;;;
