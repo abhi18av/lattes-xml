@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_dtd2xml-master" default="compile.module.dtd2xml-master">
+  <dirname property="module.dtd2xml-master.basedir" file="${ant.file.module_dtd2xml-master}"/>
+  
+  <property name="module.jdk.home.dtd2xml-master" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.dtd2xml-master" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.dtd2xml-master" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.dtd2xml-master" value="-encoding UTF-8 -source 9 -target 9 ${compiler.args}"/>
+  
+  <property name="dtd2xml-master.output.dir" value="undefined"/>
+  <property name="dtd2xml-master.testoutput.dir" value="undefined"/>
+  
+  <path id="dtd2xml-master.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="dtd2xml-master.module.production.classpath">
+    <path refid="${module.jdk.classpath.dtd2xml-master}"/>
+  </path>
+  
+  <path id="dtd2xml-master.runtime.production.module.classpath"/>
+  
+  <path id="dtd2xml-master.module.classpath">
+    <path refid="${module.jdk.classpath.dtd2xml-master}"/>
+  </path>
+  
+  <path id="dtd2xml-master.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.dtd2xml-master">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.dtd2xml-master">
+    <patternset refid="excluded.from.module.dtd2xml-master"/>
+  </patternset>
+  
+  
+  <target name="compile.module.dtd2xml-master" depends="compile.module.dtd2xml-master.production,compile.module.dtd2xml-master.tests" description="Compile module dtd2xml-master"/>
+  
+  <target name="compile.module.dtd2xml-master.production" depends="register.custom.compilers" description="Compile module dtd2xml-master; production classes"/>
+  
+  <target name="compile.module.dtd2xml-master.tests" depends="register.custom.compilers,compile.module.dtd2xml-master.production" description="compile module dtd2xml-master; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.dtd2xml-master" description="cleanup module">
+    <delete dir="${dtd2xml-master.output.dir}"/>
+    <delete dir="${dtd2xml-master.testoutput.dir}"/>
+  </target>
+</project>

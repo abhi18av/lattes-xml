@@ -1,0 +1,10 @@
+_resources/xsd-clj-spec-master.zip filter=lfs diff=lfs merge=lfs -text
+_resources/CV_4561326931035190.zip filter=lfs diff=lfs merge=lfs -text
+_resources/ExtratorLattesCNPq-master.zip filter=lfs diff=lfs merge=lfs -text
+_resources/LMPLCurriculo.DTD filter=lfs diff=lfs merge=lfs -text
+_resources/dtd-to-xsd-master.zip filter=lfs diff=lfs merge=lfs -text
+_resources/dtd2xml-master.zip filter=lfs diff=lfs merge=lfs -text
+_resources/LMPLCurriculo-master.zip filter=lfs diff=lfs merge=lfs -text
+_resources/README.md filter=lfs diff=lfs merge=lfs -text
+_resources/Resources.md filter=lfs diff=lfs merge=lfs -text
+_resources/dtd-to-xsd-1.jar filter=lfs diff=lfs merge=lfs -text
